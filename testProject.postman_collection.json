@@ -1,0 +1,726 @@
+{
+	"info": {
+		"_postman_id": "f4692d09-9be7-49ce-be63-05c541f8a13e",
+		"name": "testProject",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "RegisterUsers",
+			"item": [
+				{
+					"name": "registerUserOk",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"birthDate\": \"1983-08-23\",\r\n  \"country\": \"France\",\r\n  \"email\": \"Deseure.s@gmail.com\",\r\n  \"firstName\": \"Steven\",\r\n  \"id\": 0,\r\n  \"lastName\": \"Deseure\",\r\n  \"password\": \"Constance\",\r\n  \"username\": \"ExileNoir\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user"
+							]
+						},
+						"description": "registering a valid user"
+					},
+					"response": [
+						{
+							"name": "registerUserOkResponse",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"birthDate\": \"1983-08-23\",\r\n  \"country\": \"France\",\r\n  \"email\": \"Deseure.s@gmail.com\",\r\n  \"firstName\": \"Steven\",\r\n  \"id\": 0,\r\n  \"lastName\": \"Deseure\",\r\n  \"password\": \"Constance\",\r\n  \"username\": \"ExileNoir\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/user",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"user"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 23 Aug 2021 10:10:33 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 4,\n    \"firstName\": \"Steven\",\n    \"lastName\": \"Deseure\",\n    \"email\": \"Deseure.s@gmail.com\",\n    \"password\": \"$2a$10$RqRwDg1gAktu2N3CbrJXJ.xi.w8ZojO8GBUjDWP2cdFACgozYu9Me\",\n    \"username\": \"ExileNoir\",\n    \"birthDate\": \"1983-08-23\",\n    \"country\": \"France\"\n}"
+						}
+					]
+				},
+				{
+					"name": "registerUserOk1",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"birthDate\": \"1983-08-23\",\r\n  \"country\": \"France\",\r\n  \"email\": \"Deseure.s@gmail.com\",\r\n  \"firstName\": \"Steven\",\r\n  \"id\": \"\",\r\n  \"lastName\": \"Deseure\",\r\n  \"password\": \"Constance\",\r\n  \"username\": \"ExileNoir\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "registerUserOk1Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"birthDate\": \"1983-08-23\",\r\n  \"country\": \"France\",\r\n  \"email\": \"Deseure.s@gmail.com\",\r\n  \"firstName\": \"Steven\",\r\n  \"id\": \"\",\r\n  \"lastName\": \"Deseure\",\r\n  \"password\": \"Constance\",\r\n  \"username\": \"ExileNoir\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/user",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"user"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 23 Aug 2021 10:27:48 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 11,\n    \"firstName\": \"Steven\",\n    \"lastName\": \"Deseure\",\n    \"email\": \"Deseure.s@gmail.com\",\n    \"password\": \"$2a$10$4up/USPLr4mVQ7zapG66u.678.ArZpasqwSW3kQnD9bFUEeGfBcZu\",\n    \"username\": \"ExileNoir\",\n    \"birthDate\": \"1983-08-23\",\n    \"country\": \"France\"\n}"
+						}
+					]
+				},
+				{
+					"name": "registerUserNOkByAge",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"birthDate\": \"2020-08-23\",\r\n  \"country\": \"France\",\r\n  \"email\": \"Deseure.s@gmail.com\",\r\n  \"firstName\": \"Steven\",\r\n  \"id\": 0,\r\n  \"lastName\": \"Deseure\",\r\n  \"password\": \"Constance\",\r\n  \"username\": \"ExileNoir\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user"
+							]
+						},
+						"description": "User cannot register due to invalid age range"
+					},
+					"response": [
+						{
+							"name": "registerUserNOkByAgeResponse",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"birthDate\": \"2020-08-23\",\r\n  \"country\": \"France\",\r\n  \"email\": \"Deseure.s@gmail.com\",\r\n  \"firstName\": \"Steven\",\r\n  \"id\": 0,\r\n  \"lastName\": \"Deseure\",\r\n  \"password\": \"Constance\",\r\n  \"username\": \"ExileNoir\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/user",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"user"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 23 Aug 2021 10:11:09 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"Timestamp\": \"2021-08-23T12:11:09.5853926\",\n    \"status\": 400,\n    \"errors\": [\n        \"{You must be adult to register}\"\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "registerUserNOkByCountry",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"birthDate\": \"1983-08-23\",\r\n  \"country\": \"Belgium\",\r\n  \"email\": \"Deseure.s@gmail.com\",\r\n  \"firstName\": \"Steven\",\r\n  \"id\": 0,\r\n  \"lastName\": \"Deseure\",\r\n  \"password\": \"Constance\",\r\n  \"username\": \"ExileNoir\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user"
+							]
+						},
+						"description": "user cannot register due to not being a French Resident"
+					},
+					"response": [
+						{
+							"name": "registerUserNOkByCountryResponse",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"birthDate\": \"1983-08-23\",\r\n  \"country\": \"Belgium\",\r\n  \"email\": \"Deseure.s@gmail.com\",\r\n  \"firstName\": \"Steven\",\r\n  \"id\": 0,\r\n  \"lastName\": \"Deseure\",\r\n  \"password\": \"Constance\",\r\n  \"username\": \"ExileNoir\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/user",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"user"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 23 Aug 2021 10:11:24 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"Timestamp\": \"2021-08-23T12:11:24.9639528\",\n    \"status\": 400,\n    \"errors\": [\n        \"{You must be a French resident to register}\"\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "registerUserNOkByCountryAndAge",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"birthDate\": \"2021-08-23\",\r\n  \"country\": \"Belgium\",\r\n  \"email\": \"Deseure.s@gmail.com\",\r\n  \"firstName\": \"Steven\",\r\n  \"id\": 0,\r\n  \"lastName\": \"Deseure\",\r\n  \"password\": \"Constance\",\r\n  \"username\": \"ExileNoir\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user"
+							]
+						},
+						"description": "user cannot register due to not being and adult && not being French resident"
+					},
+					"response": [
+						{
+							"name": "registerUserNOkByCountryAndAgeResponse",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"birthDate\": \"2021-08-23\",\r\n  \"country\": \"Belgium\",\r\n  \"email\": \"Deseure.s@gmail.com\",\r\n  \"firstName\": \"Steven\",\r\n  \"id\": 0,\r\n  \"lastName\": \"Deseure\",\r\n  \"password\": \"Constance\",\r\n  \"username\": \"ExileNoir\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/user",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"user"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 23 Aug 2021 10:07:33 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"Timestamp\": \"2021-08-23T12:07:33.6966728\",\n    \"status\": 400,\n    \"errors\": [\n        \"{You must be adult to register}\",\n        \"{You must be a French resident to register}\"\n    ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "findUser",
+			"item": [
+				{
+					"name": "findUsers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/user/findUsers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"findUsers"
+							]
+						},
+						"description": "shows all registered users"
+					},
+					"response": [
+						{
+							"name": "findUsersResponse",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/user/findUsers",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"user",
+										"findUsers"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 23 Aug 2021 10:16:08 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 4,\n        \"firstName\": \"Steven\",\n        \"lastName\": \"Deseure\",\n        \"email\": \"Deseure.s@gmail.com\",\n        \"password\": \"$2a$10$RqRwDg1gAktu2N3CbrJXJ.xi.w8ZojO8GBUjDWP2cdFACgozYu9Me\",\n        \"username\": \"ExileNoir\",\n        \"birthDate\": \"1983-08-23\",\n        \"country\": \"France\"\n    },\n    {\n        \"id\": 6,\n        \"firstName\": \"Salomé\",\n        \"lastName\": \"Stevenin\",\n        \"email\": \"salomwaves@yahoo.fr\",\n        \"password\": \"$2a$10$eWU/F5bqXlOFqMrivMVqleMLe1WgrCDo6P7MV6f5M11IA5AdEm17m\",\n        \"username\": \"Salomwaves\",\n        \"birthDate\": \"1983-08-23\",\n        \"country\": \"France\"\n    },\n    {\n        \"id\": 7,\n        \"firstName\": \"Constance\",\n        \"lastName\": \"Deseure Stevenini\",\n        \"email\": \"ConstanceDS@gmail.com\",\n        \"password\": \"$2a$10$Mx7qrAJ9koOYyGcnlXhT..08/TTGd8gWPofSkaOcUhRtDkl7o8Z.G\",\n        \"username\": \"WonderGirl\",\n        \"birthDate\": \"2000-08-23\",\n        \"country\": \"France\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "findUsersById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/user/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"4"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "findUsersByIdResponse",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/user/4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"user",
+										"4"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 23 Aug 2021 10:20:38 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 4,\n    \"firstName\": \"Steven\",\n    \"lastName\": \"Deseure\",\n    \"email\": \"Deseure.s@gmail.com\",\n    \"password\": \"$2a$10$RqRwDg1gAktu2N3CbrJXJ.xi.w8ZojO8GBUjDWP2cdFACgozYu9Me\",\n    \"username\": \"ExileNoir\",\n    \"birthDate\": \"1983-08-23\",\n    \"country\": \"France\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "DeletedUserById",
+			"item": [
+				{
+					"name": "http://localhost:8080/user/2",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/user/8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"8"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
