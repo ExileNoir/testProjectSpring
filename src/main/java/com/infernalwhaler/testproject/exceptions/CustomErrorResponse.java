@@ -1,13 +1,11 @@
 package com.infernalwhaler.testproject.exceptions;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 /**
  * @author sDeseure
@@ -24,5 +22,4 @@ class CustomErrorResponse {
     private int statusCode;
     private String message;
     private String description;
-
 }

@@ -59,19 +59,16 @@ public class UserControllerTest {
                 .andExpect(jsonPath("$.lastName").value("MC"))
                 .andDo(print())
                 .andReturn().getResponse();
-        ;
     }
 
     @Test
     public void ShouldRegisterUserWhenValidRequest() throws Exception {
         final User user = new User(1L, "Doom", "MC", "McDOOM", "deathFantastic4", "Doom", LocalDate.of(1983, 11, 05), "France");
-
         when(userService.save(any(User.class))).thenReturn(user);
 
         final ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.registerModule(new JavaTimeModule());
         objectMapper.disable(SerializationFeature.WRITE_DATE_KEYS_AS_TIMESTAMPS);
-
         final String jsonEntity = objectMapper.writer().withDefaultPrettyPrinter().writeValueAsString(user);
 
         mockMvc.perform(post("/user").contentType(APPLICATION_JSON)
@@ -98,6 +95,5 @@ public class UserControllerTest {
                 .andExpect(jsonPath("$[1].username", is("IronMan")))
                 .andDo(print())
                 .andReturn().getResponse();
-        ;
     }
 }
