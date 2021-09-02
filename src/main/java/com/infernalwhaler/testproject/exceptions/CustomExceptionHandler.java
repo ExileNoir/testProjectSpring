@@ -77,8 +77,6 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
 
         return new ResponseEntity<>(errorResponse, BAD_REQUEST);
     }
-
-
 }
 
 

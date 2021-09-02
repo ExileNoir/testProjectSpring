@@ -79,8 +79,15 @@ public class UserController {
      * @see com.infernalwhaler.testproject.service.UserServiceImpl#findById(Long)
      */
     @GetMapping("/userId/{userId}")
-    public User findUserById(@PathVariable("userId") final Long userId) {
-        return userService.findById(userId);
+    public User findUserById(@PathVariable("userId") final Long userId,
+                             final HttpServletResponse httpResponse,
+                             final WebRequest request) {
+        final User user = userService.findById(userId);
+
+        httpResponse.setStatus(HttpStatus.OK.value());
+        httpResponse.setHeader("Location", String.format("%s/user/userId/%s", request.getContextPath(), userId));
+
+        return user;
     }
 
     /**
@@ -91,8 +98,18 @@ public class UserController {
      * @see com.infernalwhaler.testproject.service.UserServiceImpl#findByUsername(String)
      */
     @GetMapping("/username/{username}")
-    public User findByUsername(@PathVariable("username") final String username) {
-        return userService.findByUsername(username);
+    public User findByUsername(@PathVariable("username") final String username,
+                               final HttpServletResponse httpResponse,
+                               final WebRequest request) {
+        final User user = userService.findByUsername(username);
+        if (ObjectUtils.isEmpty(user)) {
+            throw new AccountNotFoundException(String.format("No user with username: %s", username));
+        }
+
+        httpResponse.setStatus(HttpStatus.OK.value());
+        httpResponse.setHeader("Location", String.format("%s/user/username/%s", request.getContextPath(), username));
+
+        return user;
     }
 
 
@@ -107,7 +124,6 @@ public class UserController {
     public User deleteUser(@PathVariable("userId") final Long userId,
                            final HttpServletResponse httpResponse,
                            final WebRequest request) {
-
         final User user = userService.findById(userId);
         if (ObjectUtils.isEmpty(user)) {
             throw new AccountNotFoundException(String.format("No user with id %s", userId));
