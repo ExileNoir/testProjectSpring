@@ -1,9 +1,12 @@
 package com.infernalwhaler.testproject.service;
 
+import com.infernalwhaler.testproject.exceptions.AccountNotFoundException;
 import com.infernalwhaler.testproject.model.User;
 import com.infernalwhaler.testproject.repository.UserRepository;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -30,17 +33,6 @@ public class UserServiceImpl implements IUserService {
 
 
     /**
-     * Finds a user by Email
-     *
-     * @param email of the user
-     * @return user
-     */
-    @Override
-    public User findByEmail(final String email) {
-        return userRepository.findByEmail(email);
-    }
-
-    /**
      * Finds a user by username
      *
      * @param username of the user
@@ -51,28 +43,6 @@ public class UserServiceImpl implements IUserService {
         return userRepository.findByUsername(username);
     }
 
-    /**
-     * Finds a user by lastname
-     *
-     * @param lastName of the user
-     * @return user
-     */
-    @Override
-    public User findByLastName(final String lastName) {
-        return userRepository.findByLastName(lastName);
-    }
-
-    /**
-     * Finds a user by lastname && firstname
-     *
-     * @param lastName  of the user
-     * @param firstName of the user
-     * @return user
-     */
-    @Override
-    public User findByLastNameAndFirstName(final String lastName, final String firstName) {
-        return userRepository.findByLastNameAndFirstName(lastName, firstName);
-    }
 
     /**
      * Deletes a user
@@ -103,6 +73,9 @@ public class UserServiceImpl implements IUserService {
     public Set<User> findAll() {
         final Set<User> users = new HashSet<>();
         userRepository.findAll().forEach(users::add);
+        if (ObjectUtils.isEmpty(users)) {
+            throw new AccountNotFoundException("No users Found");
+        }
         return users;
     }
 
@@ -114,7 +87,8 @@ public class UserServiceImpl implements IUserService {
      */
     @Override
     public User findById(final Long userId) {
-        return userRepository.findById(userId).orElseThrow(null);
+        return userRepository.findById(userId)
+                .orElseThrow(() -> new AccountNotFoundException(String.format("No user with id %s", userId)));
     }
 
     /**
@@ -125,6 +99,9 @@ public class UserServiceImpl implements IUserService {
      */
     @Override
     public User save(final User user) {
+        if (userRepository.findByUsername(user.getUsername()) != null) {
+            throw new BadCredentialsException(String.format("cannot register with existing username %s", user.getUsername()));
+        }
         final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         final String encodePassword = encoder.encode(user.getPassword());
         user.setPassword(encodePassword);

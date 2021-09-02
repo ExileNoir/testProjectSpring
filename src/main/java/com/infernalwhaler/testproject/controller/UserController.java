@@ -1,12 +1,15 @@
 package com.infernalwhaler.testproject.controller;
 
+import com.infernalwhaler.testproject.exceptions.AccountNotFoundException;
 import com.infernalwhaler.testproject.model.User;
-import com.infernalwhaler.testproject.service.ICrudService;
 import com.infernalwhaler.testproject.service.IUserService;
 import com.infernalwhaler.testproject.service.UserServiceImpl;
+import org.springframework.http.HttpStatus;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.WebRequest;
 
-import javax.transaction.Transactional;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.util.Set;
 
@@ -17,7 +20,6 @@ import java.util.Set;
  * @author sDeseure
  * @project TestProject
  * @date 17/08/2021
- * @see ICrudService
  * @see IUserService
  * @see UserServiceImpl
  * @see User
@@ -35,10 +37,33 @@ public class UserController {
 
 
     /**
+     * Registers a user
+     *
+     * @param user who is an adult French resident
+     * @return User
+     * @see UserServiceImpl#save(User)
+     * @see com.infernalwhaler.testproject.utilities.Adult
+     * @see com.infernalwhaler.testproject.utilities.AdultValidator
+     * @see com.infernalwhaler.testproject.utilities.CountryFrance
+     * @see com.infernalwhaler.testproject.utilities.CountryFranceValidator
+     */
+    @PostMapping
+    public User registerUser(@Valid @RequestBody final User user,
+                             final HttpServletResponse httpResponse,
+                             final WebRequest request) {
+        userService.save(user);
+
+        httpResponse.setStatus(HttpStatus.CREATED.value());
+        httpResponse.setHeader("Location", String.format("%s/user/%s", request.getContextPath(), user.getId()));
+
+        return user;
+    }
+
+
+    /**
      * Shows all registered users
      *
      * @return Set of registered users
-     * @see ICrudService#findAll()
      * @see UserServiceImpl#findAll()
      */
     @GetMapping("/findUsers")
@@ -51,31 +76,23 @@ public class UserController {
      *
      * @param userId of the user
      * @return User
-     * @see com.infernalwhaler.testproject.service.ICrudService#findById(Object)
      * @see com.infernalwhaler.testproject.service.UserServiceImpl#findById(Long)
      */
-    @GetMapping("{userId}")
+    @GetMapping("/userId/{userId}")
     public User findUserById(@PathVariable("userId") final Long userId) {
         return userService.findById(userId);
     }
 
-
     /**
-     * Registers a user
+     * Finds a user by username
      *
-     * @param user who is an adult French resident
+     * @param username of the user
      * @return User
-     * @see ICrudService#save(Object)
-     * @see UserServiceImpl#save(User)
-     * @see com.infernalwhaler.testproject.utilities.Adult
-     * @see com.infernalwhaler.testproject.utilities.AdultValidator
-     * @see com.infernalwhaler.testproject.utilities.CountryFrance
-     * @see com.infernalwhaler.testproject.utilities.CountryFranceValidator
+     * @see com.infernalwhaler.testproject.service.UserServiceImpl#findByUsername(String)
      */
-    @PostMapping
-    @Transactional
-    public User processRegistration(@Valid @RequestBody final User user) {
-        return userService.save(user);
+    @GetMapping("/username/{username}")
+    public User findByUsername(@PathVariable("username") final String username) {
+        return userService.findByUsername(username);
     }
 
 
@@ -83,11 +100,23 @@ public class UserController {
      * Deletes a user by userId
      *
      * @param userId of the user
-     * @see ICrudService#deleteById(Object)
+     * @return User
      * @see UserServiceImpl#deleteById(Long)
      */
     @DeleteMapping({"{userId}"})
-    public void deleteUser(@PathVariable("userId") final Long userId) {
+    public User deleteUser(@PathVariable("userId") final Long userId,
+                           final HttpServletResponse httpResponse,
+                           final WebRequest request) {
+
+        final User user = userService.findById(userId);
+        if (ObjectUtils.isEmpty(user)) {
+            throw new AccountNotFoundException(String.format("No user with id %s", userId));
+        }
         userService.deleteById(userId);
+
+        httpResponse.setStatus(HttpStatus.ACCEPTED.value());
+        httpResponse.setHeader("Location", String.format("%s/user/%s", request.getContextPath(), userId));
+
+        return user;
     }
 }

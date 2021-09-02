@@ -46,14 +46,6 @@ class UserServiceImplTest {
         returnUser.setPassword(encoder.encode(returnUser.getPassword()));
     }
 
-    @Test
-    void findByLastName() {
-        when(userRepository.findByLastName(any())).thenReturn(returnUser);
-        final User doom = service.findByLastName(LAST_NAME);
-
-        assertEquals(LAST_NAME, doom.getLastName());
-        verify(userRepository).findByLastName(any());
-    }
 
     @Test
     void findAll() {

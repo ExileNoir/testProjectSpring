@@ -2,49 +2,28 @@ package com.infernalwhaler.testproject.service;
 
 import com.infernalwhaler.testproject.model.User;
 
+import java.util.Set;
+
 /**
  * UserService Interface
  *
  * @author sDeseure
  * @project TestProject
  * @date 18/08/2021
- * @see ICrudService
  */
 
 
-public interface IUserService extends ICrudService<User, Long> {
+public interface IUserService {
 
-    /**
-     * Finds a user by Email
-     *
-     * @param email of the user
-     * @return user
-     */
-    User findByEmail(final String email);
+    Set<User> findAll();
 
-    /**
-     * Finds a user by username
-     *
-     * @param username of the user
-     * @return user
-     */
+    User findById(final Long id);
+
+    User save(final User user);
+
+    void delete(final User user);
+
+    void deleteById(final Long id);
+
     User findByUsername(final String username);
-
-    /**
-     * Finds a user by lastname
-     *
-     * @param lastName of the user
-     * @return user
-     */
-    User findByLastName(final String lastName);
-
-    /**
-     * Finds a user by lastname && firstname
-     *
-     * @param lastName  of the user
-     * @param firstName of the user
-     * @return user
-     */
-    User findByLastNameAndFirstName(final String lastName, final String firstName);
-
 }
