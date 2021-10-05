@@ -33,7 +33,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @project TestProject
  * @date 19/08/2021
  */
-//@SpringBootTest
+
 @WebMvcTest
 @RunWith(SpringRunner.class)
 @ActiveProfiles("test")
@@ -48,7 +48,8 @@ public class UserControllerTest {
     @Test
     public void shouldGetUserByIdWhenValidRequest() throws Exception {
         final User user = new User(1L, "Doom", "MC", "McDOOM", "deathFantastic4", "Doom", LocalDate.of(1983, 11, 05), "France");
-        when(userService.findById(1L)).thenReturn(user);
+        when(userService.findById(1L))
+                .thenReturn(user);
 
         mockMvc.perform(get("/user/userId/1")
                         .accept(APPLICATION_JSON))
@@ -64,12 +65,15 @@ public class UserControllerTest {
     @Test
     public void ShouldRegisterUserWhenValidRequest() throws Exception {
         final User user = new User(1L, "Doom", "MC", "McDOOM", "deathFantastic4", "Doom", LocalDate.of(1983, 11, 05), "France");
-        when(userService.save(any(User.class))).thenReturn(user);
+        when(userService.save(any(User.class)))
+                .thenReturn(user);
 
         final ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.registerModule(new JavaTimeModule());
         objectMapper.disable(SerializationFeature.WRITE_DATE_KEYS_AS_TIMESTAMPS);
-        final String jsonEntity = objectMapper.writer().withDefaultPrettyPrinter().writeValueAsString(user);
+        final String jsonEntity = objectMapper.writer()
+                .withDefaultPrettyPrinter()
+                .writeValueAsString(user);
 
         mockMvc.perform(post("/user").contentType(APPLICATION_JSON)
                         .content(jsonEntity)
@@ -87,7 +91,8 @@ public class UserControllerTest {
         final User user = new User(1L, "Doom", "MC", "McDOOM", "deathFantastic4", "Doom", LocalDate.of(1983, 11, 05), "France");
         final User user1 = new User(2L, "Tony", "Stark", "stark@avengers.com", "Bubbles", "IronMan", LocalDate.of(1983, 11, 05), "France");
         final User user2 = new User(3L, "John", "Constantine", "Constantine@vertigo.com", "familyMan", "Hellblazer", LocalDate.of(1983, 11, 05), "France");
-        when(userService.findAll()).thenReturn(Sets.newLinkedHashSet(user, user1, user2));
+        when(userService.findAll())
+                .thenReturn(Sets.newLinkedHashSet(user, user1, user2));
 
         mockMvc.perform(get("/user/findUsers"))
                 .andExpect(status().isOk())

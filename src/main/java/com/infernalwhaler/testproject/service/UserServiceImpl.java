@@ -77,6 +77,13 @@ public class UserServiceImpl implements IUserService {
             throw new AccountNotFoundException("No users Found");
         }
         return users;
+
+        // Equivalent a ->  userRepository.findAll().forEach(users::add);
+//        Stream<User> streamUser = StreamSupport.stream(Spliterators
+//                .spliteratorUnknownSize(
+//                        userRepository.findAll().iterator(),
+//                        Spliterator.ORDERED), false);
+//        streamUser.collect(Collectors.toCollection(()->users));
     }
 
     /**
